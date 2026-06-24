@@ -5,16 +5,12 @@ class Player:
         self.pos_x = x
         self.pos_y = y
 
-    # Flyttar spelaren. "dx" och "dy" är skillnaden
     def move(self, dx, dy):
-        """Flyttar spelaren.\n
-        dx = horisontell förflyttning, från vänster till höger\n
-        dy = vertikal förflyttning, uppifrån och ned"""
         self.pos_x += dx
         self.pos_y += dy
 
-    def can_move(self, x, y, grid):
-        return True
-        #TODO: returnera True om det inte står något i vägen
+    def can_move(self, dx, dy, grid):
+        next_x = self.pos_x + dx
+        next_y = self.pos_y + dy
 
-
+        return grid.get(next_x, next_y) != grid.wall
